@@ -1,0 +1,40 @@
+Hackathon Problem Statement:  
+Employee Management CLI Application 
+Objective: 
+Create a Command Line Interface (CLI) application in Python for managing employees 
+in a company. This should demonstrate OOP principles, proper modularization, file
+based persistence, and include unit testing. 
+Functional Requirements: 
+The CLI should support: 
+1. Add a new employee 
+2. View all employees 
+3. Search employee by ID 
+4. Delete an employee 
+5. Save and load data from Pickle file 
+Employee Details: 
+Each employee record should include: 
+ id (Unique, auto-generated) 
+ name 
+ department 
+ designation 
+ gross_salary 
+ tax 
+ bonus 
+ net_salary 
+Folder Structure 
+employee_mgmt/ 
+│ 
+├── main.py 
+├── employee.py 
+├── employee_manager.py 
+├── storage.py 
+├── employees.json 
+├── tests/ 
+│   
+│   
+│   
+│   
+├── __init__.py 
+├── test_employee.py 
+├── test_employee_manager.py 
+└── test_storage.py
