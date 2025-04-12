@@ -1,0 +1,30 @@
+🧩 Problem Statement: “BookVerse: A Smart Library Tracker”
+📚 Background:
+You're developing a backend simulation for BookVerse, a smart library system. The system tracks borrowing activity, parses user logs, identifies overdue books using regular expressions, and summarizes user behavior — all with Python.
+✅ Objective:
+Build a Python program that simulates library operations like borrowing and returning books, logs each transaction to a file, parses the file to extract useful information, and provides user or book-based insights.
+🔧 Functional Requirements:
+1. Object-Oriented Structure
+Class Book:
+Attributes: book_id, title, author
+Class User:
+Attributes: user_id, name
+Method: borrow_book(book: Book)
+Method: return_book(book: Book)
+2. Log File Format (File I/O)
+Whenever a book is borrowed or returned, log it to a file:
+yamlCopyEdit[2025-04-11 10:24] User: U101 | Name: Alice | Action: BORROW | Book: B001 - "The Alchemist" by Paulo Coelho[2025-04-13 15:40] User: U101 | Name: Alice | Action: RETURN | Book: B001 
+3. Regex-Based Log Parsing
+Use regular expressions to extract:
+User ID, Book ID, Timestamp, Action
+Identify books that haven’t been returned (i.e., present in a BORROW entry without a corresponding RETURN)
+4. LibraryAnalyzer Class
+Method analyze_logs() → summarizes:
+Number of unique books borrowed
+Users with the most borrowings
+Currently borrowed (unreturned) books
+Overloaded method analyze_logs(user_id) → filters logs for a specific user
+5. Summary File Output
+Create a summary.txt with content like:
+yamlCopyEditTotal Unique Books Borrowed: 25 Top Borrower: U103 - Bob (12 books) Currently Unreturned Books:- B007: "1984" by George Orwell (Borrowed by U105 - Charlie)
+ 
