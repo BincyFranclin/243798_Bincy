@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Jumble Word</title></head>
+<body>
+  <h2>Jumble a Word</h2>
+  <form method="post">
+    {% csrf_token %}
+    Enter a word: <input type="text" name="word" required>
+    <button type="submit">Jumble</button>
+  </form>
+
+  {% if jumbled %}
+    <p><strong>Original:</strong> {{ original }}</p>
+    <p><strong>Jumbled:</strong> {{ jumbled }}</p>
+  {% endif %}
+  <br>
+  <a href="/">Back to Home</a>
+</body>
+</html>
