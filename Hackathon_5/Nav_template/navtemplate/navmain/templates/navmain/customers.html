@@ -1,0 +1,46 @@
+{% extends 'navmain/base.html' %}
+
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+        <h2 class="text-2xl font-bold mb-4">Incident Overview</h2>
+
+
+        <!-- <div class="max-w-xs mx-auto mt-8">
+            <canvas id="incidentChart"></canvas>
+        </div> -->
+          
+        <div class="mx-auto mt-8 w-[700px] aspect-[4/3]">
+            <canvas id="incidentChart"></canvas>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+
+            const ctx = document.getElementById('incidentChart');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: {{ labels|safe }},   // X Axis
+                    datasets: [{
+                        label: '# of Incidents',
+                        data: {{ counts|safe  }}, // Y Axis
+                        backgroundColor: ['#60a5fa', '#f97316', '#10b981', '#f43f5e'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+
+        </script>
+
+{% endblock %}

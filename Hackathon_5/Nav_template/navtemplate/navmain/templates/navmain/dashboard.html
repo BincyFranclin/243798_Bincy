@@ -1,0 +1,62 @@
+{% extends 'navmain/base.html' %}
+ 
+{% block title %}Dashboard{% endblock %}
+ 
+{% block content %}
+ 
+<h2 class="text-2xl font-bold mb-4">Incident Overview</h2>
+ 
+<div class="mx-auto mt-8 w-[700px] aspect-[4/3]">
+    <canvas id="incidentChart"></canvas>
+</div>
+ 
+ 
+<h2 class="text-2xl font-bold mt-12 mb-4">Age Group Distribution</h2>
+<div class="mx-auto mt-4 w-[500px] aspect-[1/1]">
+    <canvas id="ageChart"></canvas>
+</div>
+ 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
+<script>
+    const ctxBar = document.getElementById('incidentChart');
+    new Chart(ctxBar, {
+        type: 'bar',
+        data: {
+            labels: {{ labels|safe }},
+            datasets: [{
+                label: '# of Incidents',
+                data: {{ counts|safe }},
+                backgroundColor: ['#61a5fa', '#f79316', '#10b981', '#f43f5e'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+ 
+    const ctxPie = document.getElementById('ageChart');
+    new Chart(ctxPie, {
+        type: 'pie',
+        data: {
+            labels: {{ age_labels|safe }},
+            datasets: [{
+                label: 'Age Groups',
+                data: {{ age_counts|safe }},
+                backgroundColor: ['#3b82f6', '#fbbf24', '#10b981', '#ef4444'],
+                hoverOffset: 10
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+</script>
+ 
+{% endblock %}
